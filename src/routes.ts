@@ -5,9 +5,9 @@ import authMiddleware from "./middlewares/authMiddleware";
 
 const Routes = Router();
 
-Routes.get("/users", UserController.index);
+Routes.get("/users",authMiddleware, UserController.index);
 Routes.post("/users", UserController.store);
 
-Routes.post("/login", authMiddleware ,AuthController.login);
+Routes.post("/login", AuthController.login);
 
 export default Routes;

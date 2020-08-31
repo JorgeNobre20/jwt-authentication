@@ -7,14 +7,14 @@ class UserController{
     async store(req: Request, res: Response){
 
         const username = req.body.username as string;
-        const email = req.body.username as string;
+        const email = req.body.email as string;
         const password = req.body.password as string;
 
         if(!username && !email && !password){
             return res.status(404).json({ "message": "Informações inválidas" });
         }
 
-        const userExists = await db("users").select<IUser>("*").where({ email: email });
+        const [userExists] = await db("users").select<IUser[]>("*").where({ email: email });
 
         if(userExists){
             return res.status(400).json({ "message": "Este e-mail já está cadastrado" });
@@ -32,33 +32,10 @@ class UserController{
     async index(req: Request, res: Response){
 
         const users = await db("users").select<IUser[]>("*");
-        return res.json(200).json(users)
+        return res.status(200).json(users);
 
     }
 
-
-    async login(req: Request, res: Response){
-        
-        const email = req.body.username as string;
-        const password = req.body.password as string;
-
-        if(!email && !password){
-            return res.status(404).json({ "message": "Todos os campos são obrigatórios" });
-        }
-
-        const user = await db("users").select<IUser>("*").where({ email: email });
-
-        if(!user){
-            return res.status(400).json({ "message": "Usuário não registrado" });
-        }
-
-        if(user.password !== password){
-            return res.status(400).json({ "message": "E-mail ou senha incorretos" });
-        }
-
-        return res.json(200).json(user)
-
-    }
 }
 
 export default new UserController();

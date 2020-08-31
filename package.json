@@ -4,7 +4,7 @@
   "description": "Node Js JWT authentication api",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts --respawn --compile-only --ignore-watch node_modules",
+    "dev": "ts-node-dev --files src/server.ts --respawn --compileOnly --ignore-watch node_modules",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
   },
   "keywords": [
