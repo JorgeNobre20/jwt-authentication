@@ -6,6 +6,6 @@ const Routes = Router();
 Routes.get("/users", UserController.index);
 Routes.post("/users", UserController.store);
 
-// Routes.post("/login");
+Routes.post("/login", UserController.login);
 
 export default Routes;
