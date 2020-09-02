@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="github/logo.png" margin="20" width="200" height="auto" alt="Welcome" />
+  <img src="github/logo.jpg" margin="20" width="200" height="auto" alt="Welcome" />
 </div>
 
 <h3>🏆 Projeto: </h3>
